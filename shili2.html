@@ -8,45 +8,40 @@
         body {
             margin: 0;
             padding: 0;
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
             background-color: #f0f0f0;
-            position: relative;
             font-family: Arial, sans-serif;
         }
 
-        .scroll-container {
+        .container {
             width: 100vw;
-            height: 100vh;
-            overflow-y: scroll;
-            position: relative;
+            max-width: 1200px;
+            background-color: #ecf2f4;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         .image-container {
-            width: 100vw;
-            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .image-container img {
             width: 100%;
             height: auto;
+            margin-bottom: 10px;
         }
 
-        .image-1 { top: 0; z-index: 1; }
-        .image-2 { top: 43vh; z-index: 2; }
-        .image-3 { top: 130vh; z-index: 5; }
-        .image-4 { top: 105vh; z-index: 4; }
-        .image-5 { top: 28vh; z-index: 3; text-align: center; color: white; }
-        .image-6 { top: 38vh; width: 15%; left: 43%; z-index: 6; text-align: center; color: white; }
-
         .form-container {
-            position: absolute;
-            top: 20vh;
-            left: 50%;
-            width: 80%;
-            transform: translateX(-50%);
-            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+            width: 100%;
         }
 
         .form-section {
@@ -59,117 +54,69 @@
             font-weight: bold;
             width: 35%;
             text-align: left;
-            color: hsla(0, 0%, 100%, 0.8);
+            color: hsla(0, 0%, 0%, 0.8);
         }
 
         .form-value {
             width: 60%;
             text-align: left;
-            color: #ffffff;
+            color: #000000;
         }
 
-        .contact-info {
-            position: absolute;
-            top: 70%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+        .contact-info, .warning-message, .query-count-container {
             text-align: center;
-            z-index: 7;
-            color: #ffffff;
+            margin: 10px 0;
         }
 
         .address-info {
-            width: 55%;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: left;
-            z-index: 7;
-            color: #000000;
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 5px;
-        }
-
-        .address-container {
-            width: 100vw;
-            position: absolute;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 10px;
         }
 
         .address-info a {
+            flex: 1 1 calc(50% - 10px);
             display: flex;
             align-items: center;
             color: rgb(43, 41, 41);
             text-decoration: none;
-            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #e5e5e5;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
         }
 
-        .address-info a:not(:last-child) {
-            border-bottom: 1px solid #e5e5e5;
-            width: 100%;
+        .address-info a:hover {
+            transform: scale(1.05);
         }
 
         .address-info img {
-            width: 60vw;
+            width: 60px;
             height: auto;
-            margin-left: 0;
-            display: inline-block;
+            margin-right: 10px;
         }
 
         .address-info img.checkmore {
             width: 30px;
-            margin-left: 10px;
-            vertical-align: middle;
+            margin-left: auto;
         }
 
-        .warning-message {
-            position: absolute;
-            top: 28vh;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 8;
-            color: rgba(255, 255, 255, 0.89);
-            font-weight: bold;
-            text-align: center;
-        }
-
-        .query-count-container {
-            position: absolute;
-            top: 6vh;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 9;
-            color: white;
-            font-weight: bold;
-            text-align: center;
+        .address-info img.large-image {
+            width: 100%;
         }
 
         /* Media queries for responsiveness */
         @media (max-width: 768px) {
-            .form-container {
-                width: 90%;
-            }
-            .address-info {
-                width: 90%;
-                padding: 10px;
-            }
-            .address-info img {
-                width: 100%;
-            }
-            .image-2 { top: 50vh; }
-            .image-4 { top: 120vh; }
-            .image-6 { top: 42vh; width: 25%; }
-        }
-
-        @media (max-width: 480px) {
             .form-label, .form-value {
                 font-size: 14px;
             }
+
             .address-info a {
-                flex-direction: column;
-                align-items: flex-start;
+                flex: 1 1 100%;
             }
+
             .address-info img.checkmore {
                 margin-left: 0;
                 margin-top: 10px;
@@ -178,12 +125,10 @@
     </style>
 </head>
 <body>
-    <div class="scroll-container">
-        <div class="image-container image-1">
+    <div class="container">
+        <div class="image-container">
             <img src="fangwei4.jpg" alt="防伪4">
-        </div>
-        <div class="image-container image-2">
-            <img src="lan.jpg" alt="蓝图">
+           
             <div class="form-container">
                 <form action="">
                     <div class="form-section">
@@ -225,43 +170,32 @@
                 <p>400-055-7779</p>
             </div>
         </div>
-        <div class="image-container image-3">
-            <img src="huang.jpg" alt="黄图">
-            <div class="address-info">
-                <a href="" target="_blank"> 巴斯夫涂料1688品牌站  
-                    <img src="checkmore.jpg" alt="查看更多" class="checkmore">
-                </a>
-                <a>巴斯夫汽车修补漆官方网站
-                    <img src="checkmore.jpg" alt="查看更多" class="checkmore">
-                </a>
-                <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzI4NjQ3NDY4MA==&scene=124#wechat_redirect" target="_blank">巴斯夫涂料官方微信公众号
-                    <img src="checkmore.jpg" alt="查看更多" class="checkmore">
-                </a>
-                <a href="https://m.1688.com/?__removesafearea__=1&src_cna=Y4AwH8h+RU4BASQIhFY3/r77" target="_blank">
-                    <img src="fangwei8.jpg" alt="巴斯夫汽车涂料事业部">
-                </a>
-                <a href="https://m.1688.com/?__removesafearea__=1&src_cna=Y4AwH8h+RU4BASQIhFY3/r77" target="_blank">
-                    <img src="fangwei7.jpg" alt="巴斯夫汽车涂料事业部">
-                </a>
-                <img src="fangwei9.jpg" alt="诺缤小芝麻">
-                <img src="fangwei6.jpg" alt="诺缤纷66系列">
-            </div>
+        <div class="address-info">
+            <a href="https://m.1688.com/winport/b2b-2123073290.html?memberId=b2b-2123073290&__removesafearea__=1&src_cna=Y4AwH8h+RU4BASQIhFY3/r77&isVisited=true" target="_blank"> 巴斯夫涂料1688品牌站  
+                <img src="checkmore.jpg" alt="查看更多" class="checkmore">
+            </a>
+            <a>巴斯夫汽车修补漆官方网站
+                <img src="checkmore.jpg" alt="查看更多" class="checkmore">
+            </a>
+            <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzI4NjQ3NDY4MA==&scene=124#wechat_redirect" target="_blank">巴斯夫涂料官方微信公众号
+                <img src="checkmore.jpg" alt="查看更多" class="checkmore">
+            </a>
+            <a href="https://m.1688.com/?__removesafearea__=1&src_cna=Y4AwH8h+RU4BASQIhFY3/r77" target="_blank">
+                <img src="fangwei8.jpg" alt="巴斯夫汽车涂料事业部" class="large-image">
+            </a>
+            <a href="https://air.1688.com/show/shili/factory/index.html?__pageId__=21464&cms_id=21464&__existtitle__=1&spm=a26g8.12124735.notfound" target="_blank">
+                <img src="fangwei7.jpg" alt="诺缤小芝麻" class="large-image">
+            </a>
+            <a href="https://m.1688.com/?__removesafearea__=1&src_cna=xJwwH3lTBEcBASQIhFYYUSyH">
+            <img src="fangwei9.jpg" alt="诺缤纷66系列" class="large-image">
+            </a>
+            <img src="fangwei6.jpg" alt="亮彩修补" class="large-image">
         </div>
-        <div class="image-container image-4">
-            <img src="fangwei3.jpg" alt="防伪3">
-        </div>
-        <div class="image-container image-5">
-            <img src="fangwei1.jpg" alt="防伪1">
-            <div class="form-container"></div>
-            <div class="warning-message">您所查询的防伪码已被多次查询，谨防假冒</div>
-        </div>
-        <div class="image-container image-6">
-            <img src="yellowq.jpg" alt="黄圈">
-            <div id="query-info" class="query-count-container">
-                <div>查询次数</div>
-                <div id="query-count"></div>
-            </div>  
-        </div>
+        <div class="warning-message">您所查询的防伪码已被多次查询，谨防假冒</div>
+        <div class="query-count-container">
+            <div>查询次数</div>
+            <div id="query-count"></div>
+        </div>  
     </div>
 
     <script>
